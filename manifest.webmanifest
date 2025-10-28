@@ -1,0 +1,16 @@
+{
+  "name": "Gemini Time-Travel Booth",
+  "short_name": "TimeTravel",
+  "description": "Let Gemini transport you to different historical eras!",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f3e8ff",
+  "theme_color": "#a855f7",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
