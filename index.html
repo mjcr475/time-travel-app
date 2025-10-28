@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./icon.svg" />
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="./manifest.webmanifest">
+    <meta name="theme-color" content="#a855f7">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gemini Time-Travel Booth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Nunito', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.27.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
+}
+</script>
+</head>
+  <body class="bg-gradient-to-br from-purple-100 via-pink-100 to-blue-100 text-gray-700">
+    <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          // In sandboxed environments, we must construct an absolute URL for the
+          // service worker file based on the current page's origin to avoid
+          // cross-origin security errors.
+          const baseUrl = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
+          const serviceWorkerUrl = new URL('sw.js', baseUrl).href;
+
+          navigator.serviceWorker.register(serviceWorkerUrl, { scope: baseUrl })
+            .then(registration => {
+              console.log('Service Worker registered successfully with scope:', registration.scope);
+            })
+            .catch(error => {
+              console.error('Service Worker registration failed:', error);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
